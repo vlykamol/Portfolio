@@ -10,6 +10,6 @@ jobs:
           node-version: 16
       - name: build project
         run: npm run build
-      -name: setup finished
+      - name: setup finished
         run: echo project bulid successfull
 
