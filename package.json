@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "deploy": "cd dist && vercel --production --token=Hl3m3PFqVKurR32IDJHXUNcL"
+    "deploy": "cd dist && vercel --prod --token=Hl3m3PFqVKurR32IDJHXUNcL"
   },
   "dependencies": {
     "react": "^18.2.0",
