@@ -1,0 +1,76 @@
+name: Portfolio
+on: [push]
+jobs:
+  build-project:
+    runs-on: ubuntu-latest
+    env:
+      VERCEL_ORG_ID: ${{secrets.VERCEL_ORG_ID}}
+      VERCEL_PROJECT_ID: ${{secrets.VERCEL_PROJEC_ID}}
+      VERCEL_TOKEN: ${{secrets.VERCEL_TOKEN}}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16
+      - name: install dependencies
+        run: npm install
+      - name: build project
+        run: npm run build
+      - name: server dependencies
+        run: cd server && npm install
+      - name: vercel env setup
+        run: |
+          cd server
+          mkdir .vercel
+          cd .vercel
+          touch project.json
+          echo "{\"orgId\":\"$VERCEL_ORG_ID\",\"projectId\":\"$VERCEL_PROJECT_ID\"}"
+      - name: deploye project
+        run: cd server && vercel --prod --token=$VERCEL_TOKEN
+      - name: setup finished
+        run: echo project bulid successfull
+
+
+
+# name: eCommerce
+# on: [push]
+# jobs:
+#   build-project:
+#     runs-on: ubuntu-latest
+#     env:
+#       VERCEL_TOKEN: ${{secrets.VERCEL_TOKEN}}
+#       VERCEL_ORG_ID: ${{secrets.VERCEL_ORG_ID}}
+#       VERCEL_PROJECT_ID: ${{secrets.VERCEL_PROJECT_ID}}
+#       MONGODB_URI: ${{secrets.MONGODB_URI}}
+#       JWT_ACCESS_TOKEN: ${{secrets.JWT_ACCESS_TOKEN}}
+#       RAZORPAY_SECRET: ${{secrets.RAZORPAY_SECRET}}
+#       RAZORPAY_KEY_ID: ${{secrets.RAZORPAY_KEY_ID}}
+#     steps:
+#       - uses: actions/checkout@v2
+#       - uses: actions/setup-node@v2
+#         with:
+#           node-version: 16
+#       - name: install dependencies
+#         run: cd client && npm install
+#       - name: build frontend project
+#         run: cd client && npm run build
+#       - name: installing server dependencies
+#         run: cd server && npm install
+#       - name: seting up vercel env
+#         run: |
+#           cd server
+#           mkdir .vercel
+#           cd .vercel
+#           touch project.json
+#           echo "{\"orgId\":\"$VERCEL_ORG_ID\",\"projectId\":\"$VERCEL_PROJECT_ID\"}"
+#       - name: deploy project
+#         env:
+#           MONGODB_URI: $MONGODB_URI
+#           JWT_ACCESS_TOKEN: $JWT_ACCESS_TOKEN
+#           RAZORPAY_SECRET: $RAZORPAY_SECRET
+#           RAZORPAY_KEY_ID: $RAZORPAY_KEY_ID
+#         run: |
+#           cd server && vercel --prod --token=$VERCEL_TOKEN
+#       - name: project deployed
+#         run: echo "successfull"
+
