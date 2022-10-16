@@ -20,6 +20,6 @@ app.get('/api', (req, res) =>{
 
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, './dist/index.html')))
 
-app.listen(3000, () =>{
-  console.log('server running');
+app.listen(PORT, () =>{
+  console.log(`'server running on http://localhost:${PORT}`);
 })
