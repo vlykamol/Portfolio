@@ -11,16 +11,14 @@ mongoose.connect(process.env.MONGODB_URI).then(() => {
   console.log('database connected');
 }).catch(err => console.log('error while connecting database', err))
 
-app.use(express.static(path.join(__dirname, '../dist/')))
+app.use(express.static(path.join(__dirname, './dist/')))
 
 app.get('/api', (req, res) =>{
   res.send('hey')
 })
 
 
-
-
-app.get('/', (req, res) => res.sendFile(path.join(__dirname, '../dist/index.html')))
+app.get('/', (req, res) => res.sendFile(path.join(__dirname, './dist/index.html')))
 
 app.listen(3000, () =>{
   console.log('server running');
