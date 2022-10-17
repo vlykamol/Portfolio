@@ -7,7 +7,7 @@ export default function Navbar() {
   return (
     <div className='w-full p-2 bg-gradient-to-t from-black/25 to-black/0 fixed z-10'>
       <div className='flex justify-between items-center p-2'>
-      <div>
+      <div className='font-roboto'>
         valay kamol
       </div>
       <div>
@@ -34,7 +34,7 @@ export default function Navbar() {
               const contact = document.getElementById('contact')
               contact.scrollIntoView({behavior: "smooth"})
             }}
-            className='w-full text-center p-2 text-lg sm:text-base font-extrabold sm:font-normal'><button>Contact</button></li>
+            className='w-full text-center p-2 text-lg sm:text-base font-extrabold sm:font-normal bg-white text-black rounded'><button>Contact</button></li>
         </ul>
       </div>
       </div>

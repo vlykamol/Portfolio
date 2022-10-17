@@ -5,7 +5,13 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily : {
+        playfair : ['Playfair Display'],
+        roboto : ['Roboto Serif'],
+        worksans: ['Work Sans']
+      }
+    },
   },
   plugins: [],
 }

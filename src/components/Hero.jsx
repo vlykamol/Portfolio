@@ -18,10 +18,10 @@ export default function Hero() {
         </div>
       </div>
       <div className='w-full h-1/2 sm:h-full p-4 flex flex-col justify-center items-center'>
-        <div className='flex flex-col gap-2'>
-        <h3 className='text-xl sm:text-3xl px-2'>Hello, I'm</h3>
-        <h1 className='text-6xl sm:text-6xl px-2'>VALAY KAMOL</h1>
-        <p className='text-left w-4/5 px-2'>Software Engineer intersted in Front-End Devlopment, dedicated to make users lives as easy as possible</p>
+        <div className='flex flex-col'>
+        <h3 className='text-xl sm:text-3xl px-2 font-medium text-white/80'>Hello, I'm</h3>
+        <h1 className='text-6xl sm:text-6xl px-2 font-playfair font-bold'>VALAY KAMOL</h1>
+        <p className='text-left w-4/5 px-2 text-white/60'>Software Engineer with good understanding in Front-End web Devlopment, passionate to make procees simple and fun</p>
         </div>
       </div>
     </div>

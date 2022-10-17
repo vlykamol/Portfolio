@@ -3,20 +3,16 @@ import Navbar from './components/Navbar'
 import Projects from './components/Projects'
 import Contact from '../src/components/Contact'
 import { useRef } from 'react'
+import Footer from './components/Footer'
 
 function App() {
-  const heroRef = useRef(null)
-  const contactRef = useRef(null)
   return (
     <>
     <Navbar contactRef />
-    <div className='absolute top-0 w-full'>
     <Hero className='-z-10' />
     <Projects />
-    <div ref={contactRef}>
-      <Contact />
-    </div>
-    </div>
+    <Contact />
+    <Footer />
     </>
   )
 }
