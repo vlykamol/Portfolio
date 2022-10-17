@@ -10,9 +10,11 @@ export default function Contact() {
   const msgRef = useRef()
 
   const [message, setMessage] = useState('');
+  const [loading, setLoading] = useState(false)
 
   const handelsubmit = (e) => {
     e.preventDefault()
+    setLoading(true)
     fetch('/api/contact', {
       method : 'POST',
       credentials: 'same-origin',
@@ -29,7 +31,12 @@ export default function Contact() {
       emailRef.current.value = '',
       msgRef.current.value = '',
       setMessage(`I will contact you as soon as possible`)
-    }).catch(err => console.log(err))
+      setLoading(false)
+    }).catch(err => {
+      console.log(err)
+      setMessage(`look's like there is some problem`)
+      setLoading(false)
+    })
   }
   return (
     <div id='contact' className='w-full h-full flex flex-col sm:flex-row p-4'>
@@ -49,8 +56,8 @@ export default function Contact() {
         <input ref={emailRef} className='bg-transparent border-2 border-white/50 rounded-lg p-2' type="email" pattern='[a-zA-Z0-9._%+-]+@[a-z0-9]+\.[a-zA-Z]{2,4}' name="Email" id="Email" required/>
         <label htmlFor="Message">Message : </label>
         <textarea ref={msgRef} className='bg-transparent border-2 border-white/50 rounded-lg p-2' name="Message" id="Message" cols="10" rows="6" required></textarea>
-        {message && <h1 className='text-center bg-white/90 text-black p-2'>{message}</h1> }
-        <button type='submit' className='bg-white text-black rounded-lg p-2 text-lg w-fit'>Submit</button>
+        {message && <h1 className='text-center bg-white/90 text-black p-2 rounded-lg'>{message}</h1> }
+        <button type='submit' className={`${loading ? `bg-white/50` : `bg-white`} text-black rounded-lg p-2 text-lg w-fit`} disabled={loading}>{loading ? `sending message` : `Submit`}</button>
       </form>
     </div>
   )
